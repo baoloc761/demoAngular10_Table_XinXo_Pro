@@ -1,0 +1,41 @@
+<p>{{title}}</p>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th [class]="cell.css || 'my-th'" *ngFor="let cell of thList">
+        {{cell.value || ''}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let tr of body">
+      <tr [class]="tr.css">
+        <ng-container *ngIf="tr.tdList && tr.tdList.length > 0">
+          <td [class]="cell.css || 'my-td'" *ngFor="let cell of tr.tdList">
+            <ng-container *ngIf="cell.isProgressBar">
+              <progress [value]="cell.value" [max]="100">
+                {{cell.value}}
+              </progress>
+            </ng-container>
+            <ng-container *ngIf="!cell.isProgressBar">
+              <ng-container *ngIf="cell.isAccounting">
+                {{cell.value || 0 | number: '1.0-2'}}
+              </ng-container>
+              <ng-container *ngIf="!cell.isAccounting">
+                <ng-container *ngIf="cell.type === 'bool'">
+                  {{cell.value ? 'con hang' : 'het hang'}}
+                </ng-container>
+                <ng-container *ngIf="cell.type !== 'bool'">
+                  {{cell.value || ''}}
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container *ngIf="!tr.tdList || tr.tdList.length < 1">
+          <td class="my-td">No content</td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

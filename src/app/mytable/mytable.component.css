@@ -1,0 +1,22 @@
+tr > th {
+  text-align: center;
+  color: white;
+  background-color: blue;
+}
+.col-2 {
+  text-align: right;
+}
+.col-4 {
+  text-align: center;
+}
+.ch {
+  color: green;
+}
+.hh {
+  color: red;
+}
+progress {
+  display: block;
+  height: 25px;
+  margin: auto;
+}
