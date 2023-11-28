@@ -69,7 +69,7 @@ export class HousingService {
     },
     {
       id: 6,
-      name: 'Seriously Safe Towns',
+      name: 'Seriously Safe Towns 2',
       city: 'Oakland',
       state: 'CA',
       photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
