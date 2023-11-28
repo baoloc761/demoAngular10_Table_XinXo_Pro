@@ -109,14 +109,21 @@ export class HousingService {
     }
   ];
 
-  getAllHousingLocations(name: string): HousingLocation[] {
-    if (!_.isEmpty(name)) {
-      return _.filter(this.housingLocationList, (loc) => loc.name.toLocaleLowerCase().indexOf(name.toLocaleLowerCase()) !== -1)
+  getAllHousingLocations(keyword: string): HousingLocation[] {
+    let result = [];
+    if (!_.isEmpty(keyword)) {
+      result = _.filter(this.housingLocationList, (loc) => 
+      loc.name.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) !== -1 ||
+      loc.city.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) !== -1 ||
+      loc.state.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) !== -1)
+    } else {
+      result =  Object.assign([], this.housingLocationList);
     }
-    return Object.assign([], this.housingLocationList);
+    return result;
   }
 
   getHousingLocationById(id: number): HousingLocation | undefined {
-    return this.housingLocationList.find(housingLocation => housingLocation.id === id);
+    const result = this.housingLocationList.find(housingLocation => housingLocation.id === id);
+    return Object.assign({}, result);
   }
 }
