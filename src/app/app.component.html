@@ -1,5 +1,11 @@
+
+
+
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container">
-  <h1>Welcome to {{ title }}!</h1>
-  <my-table [thList]="thList" [body]="sortedBody" [title]="title"></my-table>
-</div>
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/Home">Dashboard</a>
+  <a routerLink="/TableDemo">Demo Table</a>
+  <a routerLink="/details/1">Details</a>
+</nav>
+<router-outlet></router-outlet>
