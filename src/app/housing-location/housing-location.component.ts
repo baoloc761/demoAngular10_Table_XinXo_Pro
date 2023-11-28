@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HousingLocation } from '../housinglocation';
-import { RouterModule } from '@angular/router';
+import { Component, Input, Inject, forwardRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { HousingLocation } from 'app/housinglocation';
 
 @Component({
   selector: 'app-housing-location',
@@ -13,4 +12,11 @@ export class HousingLocationComponent {
 
   @Input() housingLocation!: HousingLocation;
 
+  constructor( @Inject(forwardRef(() => Router)) private router: Router) {
+
+  }
+
+  goToLocation(loc: HousingLocation) {
+    this.router.navigateByUrl(`/details/${loc.id}`);
+  }
 }

@@ -123,7 +123,7 @@ export class HousingService {
   }
 
   getHousingLocationById(id: number): HousingLocation | undefined {
-    const result = this.housingLocationList.find(housingLocation => housingLocation.id === id);
+    const result = _.find(this.housingLocationList, (housingLocation) => housingLocation.id === id);
     return Object.assign({}, result);
   }
 }
